@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> LinkedIn Lead Maker </title>
+  <title> Abdulla LinkedIn Chrome Extension </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta charset="utf-8" />
   <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
@@ -20,7 +20,7 @@
 
     <div class="row text-center">
       <div class="popup-header">
-        <h3> LinkedIn Lead Maker </h3>
+        <h3> Abdulla LinkedIn Chrome Extension </h3>
         <!-- <img class="img-logo" src="../images/default_icon_24.png"> -->
       </div>
     </div>
@@ -59,74 +59,62 @@
         </p>
       </div> 
 
-      <div class="row text-center" id="login">
-        <p class="info">
+      <div class="row" id="user_logged_info">
+        <p class="info" style="margin-top: 0px;">
+          <div class="col-md-12">
+            Welcome, <span class="user-name"> </span>
+            <button class="btn btn-info btn-blue pull-right" id="log-out-btn">
+              <i class="fa fa-sign-out"></i> Log Out
+            </button>
+          </div>  
         </p>
       </div>
 
-      <div class="row text-center" id="linkedinLogin">
-        <p class="info">
-        </p>
-      </div>
+      <div class="row" id="login">
+        <p class="info" style="margin-top: 0px;">
+          <div class="container">
+            <div class="col-md-12">                      
+              <form class="form" role="form" method="post" action="" accept-charset="UTF-8" id="user-login-form">
+                <h4 class="text-center"> <b>LogIn To Extension </b> </h4>
+                <br>
+                <div class="form-group">
+                 <label class="sr-only" for="user_email">Email address</label>
+                 <input type="text" class="form-control" id="user_email" placeholder="Email address">
+                 <span class="help-block"></span>
+               </div>
+               <div class="form-group">
+                 <label class="sr-only" for="user_pass">Password</label>
+                 <input type="password" class="form-control" id="user_pass" placeholder="Password">
+                 <span class="help-block"></span>
+               </div>
+               <div class="form-group">
+                 <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+               </div>
+               <div class="text-center" id="loading-section">
+                 <i class="fa fa-spinner fa-spin fa-2x"></i>
+               </div>
+             </form>
 
-      <div class="row" id="error_usage" style="height: 250px;">
-        <p class="info ext_info"></p>
-      </div>
+             <div id="login-response-section">
+             </div>
 
-      <div class="row" id="use_button" style="height: 250px;">        
-        <p class="info linkedin_info"></p>        
-      </div>
+           </div>
+         </div>
+       </p>
+     </div>
 
-      <div class="row" id="add_all_profile_list_seaction">
+     <div class="row text-center" id="linkedinLogin">
+      <p class="info">
+      </p>
+    </div>
 
-        <div class="row-flex no-gutters">
-          <div class="col-xs-8">
-            <div class="btn-group list-control mobile-list-control dropdown">
-              Add to List:
-              <a href="#" id="simple-dropdown" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true" aria-expanded="true">
-                <button class="btn btn-default btn-dropdown">
-                  <span class="dropdown-text ng-binding selected-campaign"> My Contacts </span>
-                  <span class="fa fa-caret-down"></span>
-                </button>
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="simple-dropdown" id="campaign-list">
-                <!-- <div id="campaign-list">
-                </div> -->
-                <!-- <li role="menuitem">
-                  <a href="#" class="campaign-list-item"> My Contacts</a>
-                </li> -->
-                <!-- <li class="divider"></li>
-                  <li role="menuitem"><a href="#"data-toggle="modal" data-target="#addListModal"><i class="fa fa-plus"></i> New List </a></li> -->
-                </ul>
-              </div>
-            </div>
-            <div class="col-xs-4">
-              <button class="btn btn-info btn-block btn-blue" id="add-all-lead-btn">
-                <i class="fa fa-plus"></i> Add All
-              </button>
-            </div>
-          </div>
+    <div class="row" id="error_usage" style="height: 250px;">
+      <p class="info ext_info"></p>
+    </div>
 
-        <!-- <div class="col-xs-8">
-          <label>Add to List : </label>
-          <button class="btn btn-default" id="my-contact-list-btn">
-            <span id="my-contact-list-text"> </span> <i class="fa fa-caret-down"></i>
-          </button>
-        </div>
-        <div class="col-xs-4">
-          <button class="btn btn-info btn-block btn-blue" id="add-all-lead-btn">
-            <i class="fa fa-user-plus"></i> <span id="add-all-lead-text"> </span>
-          </button>
-        </div> -->
-
-        <div class="col-xs-12">
-          <br>
-          <div id="profiles-list">
-          </div>
-        </div>
-
-      </div>
-
+    <div class="row" id="use_button" style="height: 250px;">        
+      <p class="info linkedin_info"></p>        
+    </div>
 
       <div class="row" id="profile_data">
         <div class="col-xs-12">
@@ -180,11 +168,11 @@
 
     </div>
 
-    <div class="row popup-footer text-center">
+    <!-- <div class="row popup-footer text-center">
       <button class="btn btn-primary" id="go-to-list-btn">
         <i class="fa fa-list"></i> <span id="go-to-list-text"> </span>
       </button> 
-    </div>
+    </div> -->
 
   </div>
 

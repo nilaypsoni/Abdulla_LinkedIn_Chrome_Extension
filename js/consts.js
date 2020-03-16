@@ -1,12 +1,7 @@
 var consts = {  
 	
-  base_api_url : "https://www.leadmaker.io/contacts/api/",
-  new_user_api_url : "newuser",
-  save_contact_api_url : "savecontact",
-  save_company_api_url : "savecontact",
-  get_status_api_url : "getstatus",
-  get_user_api_url : "getuser",
-  get_list_api_url : "getlist",
+  base_api_url : "http://elitesigma.com/nodejs/",
+  user_login_api_url : "loginExtLn",
   
   http_timeout: 40000,
   ignore_domain: ['bit.ly', 'goo.gl', 'ow.ly','facebook.com/'],

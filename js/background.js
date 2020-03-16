@@ -8,6 +8,7 @@ var uiSettings = {
   saved_leads_obj : {},
   campaign_list : ["My Contacts"],
   selected_campaign : "My Contacts",
+  user_logged_obj : {}  
 };
 
 var myApp = {
@@ -27,6 +28,12 @@ var myApp = {
       break;
       case "goToList":      
       myApp.goToList(message, sender, sendResponse);
+      break;
+      case "getAccount":
+      myApp.getAccount(message, sender, sendResponse);
+      break;
+      case "postUserLogin":
+      myApp.postUserLogin(message, sender, sendResponse);
       break;      
       case "console_logs_myApp":
       console_logs_myApp(message.title,message.msg);
@@ -129,7 +136,30 @@ var myApp = {
     } else {
       sendResponse({ saved_leads_count : saved_leads_count, res : ""});
     }
-  }  
+  },
+  getAccount : function(message, _sender, sendResponse){
+    var user_logged_obj = uiSettings.user_logged_obj || {};
+    sendResponse(user_logged_obj);
+  },
+  postUserLogin : function(post_json, _sender, sendResponse){
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": consts.base_api_url + consts.user_login_api_url,
+      "method": "POST",
+      "data":  { 
+        Email : post_json.user_email,
+        password : post_json.user_pass,
+      }
+    };
+    $.ajax(settings).done(function (login_response) {
+      console.log("Done : postUserLogin : ",login_response);
+      sendResponse(login_response);
+    }).fail(function (response) {
+      console.log("Fail : postUserLogin : ",response);
+      sendResponse(response);
+    });
+  },
 };
 
 chrome.runtime.onMessage.addListener(myApp.onExtMessage);
@@ -403,14 +433,14 @@ function getListFromServer(post_json) {
            if (response && response.indexOf("redirect") != -1) {
             uiSettings.saved_leads_obj = {};
             myApp.saveUISettings();
-           }
-           resolve(response);
-         }).fail(function (response) {
+          }
+          resolve(response);
+        }).fail(function (response) {
           //console.log("Fail : postSaveConnectionsContactInfo : ",response);
           resolve(response);
         });
-       }
-     });
+      }
+    });
   });
 }
 
